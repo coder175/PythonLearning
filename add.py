@@ -1,9 +1,7 @@
-
 operation = input('What operation do you want to use? Type in Add, Sub, Multiply, or Divide: ')
 operation = operation.lower()
 while operation not in ('add', 'sub', 'multiply', 'divide'):
     operation = input('Please Reenter Add, Sub, Multiply, or Divide.')
-
 
 number1 = input('Enter Your first number: ')
 while not str.isdigit(number1):

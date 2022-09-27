@@ -34,47 +34,47 @@ def RPSGame():
             print('')
             print(yellow("Tie..."))
             print('')
-            t+=1
+            t += 1
         elif computerChoice == 'r' and userChoice == 'p':
             print('')
             print(green('User Wins Round.'))
             print('')
-            u+=1
+            u += 1
         elif computerChoice == 'r' and userChoice == 's':
             print('')
             print(red('Computer Wins Round.'))
             print('')
-            c+=1
+            c += 1
         elif computerChoice == 'p' and userChoice == 'r':
             print('')
             print(red('Computer Wins Round.'))
             print('')
-            c+=1
+            c += 1
         elif computerChoice == 'p' and userChoice == 'p':
             print('')
             print(yellow("Tie..."))
             print('')
-            t+=1
+            t += 1
         elif computerChoice == 'p' and userChoice == 's':
             print('')
             print(green('User Wins Round.'))
             print('')
-            u+=1
+            u += 1
         elif computerChoice == 's' and userChoice == 'r':
             print('')
             print(green('User Wins Round.'))
             print('')
-            u+=1
+            u += 1
         elif computerChoice == 's' and userChoice == 'p':
             print('')
             print(red('Computer Wins Round.'))
             print('')
-            c+=1
+            c += 1
         elif computerChoice == 's' and userChoice == 's':
             print('')
             print(yellow("Tie..."))
             print('')
-            t+=1
+            t += 1
         else:
             print("I'm Sorry. Something Went Wrong. The game closed.")
             exit()
@@ -109,4 +109,6 @@ def RPSGame():
     else:
         print("I'm Sorry. Something Went Wrong. The game is closed.")
         exit()
+
+
 RPSGame()
