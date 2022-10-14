@@ -26,9 +26,9 @@ def updateProg():
         time.sleep(2.5 - ((time.time() - starttime) % 2.5))
 
 
-def passCrackOdd():
+def passCrack1():
     global charNum
-    for charNum in range(1,25,2):
+    for charNum in range(1,25,3):
         passwords = (itertools.product(num, repeat=charNum))
         for i in passwords:
             global counter
@@ -49,9 +49,32 @@ def passCrackOdd():
                 print('I used ' + "{:,}".format(end) + ' seconds to find the password.')
                 print('Also the password is ' + "{:,}".format(int(i)))
                 os._exit(0)
-def passCrackEven():
+def passCrack2():
     global charNum
-    for charNum in range(0, 25, 2):
+    for charNum in range(2, 25, 3):
+        passwords = (itertools.product(num, repeat=charNum))
+        for i in passwords:
+            global counter
+            counter += 1
+            i = str(i)
+            i = i.replace("[", "")
+            i = i.replace("]", "")
+            i = i.replace("'", "")
+            i = i.replace(" ", "")
+            i = i.replace(",", "")
+            i = i.replace("(", "")
+            i = i.replace(")", "")
+            if i == password:
+                end = round(time.time() - start)
+                timeTaken = end - start
+                print('\n \n')
+                print('I used ' + "{:,}".format(counter) + ' tries.')
+                print('I used ' + "{:,}".format(end) + ' seconds to find the password.')
+                print('Also the password is ' + "{:,}".format(int(i)))
+                os._exit(0)
+def passCrack3():
+    global charNum
+    for charNum in range(3, 25, 3):
         passwords = (itertools.product(num, repeat=charNum))
         for i in passwords:
             global counter
@@ -76,5 +99,6 @@ def passCrackEven():
 
 if __name__ == '__main__':
     Thread(target=updateProg).start()
-    Thread(target=passCrackOdd).start()
-    Thread(target=passCrackEven).start()
+    Thread(target=passCrack1).start()
+    Thread(target=passCrack2).start()
+    Thread(target=passCrack3).start()
