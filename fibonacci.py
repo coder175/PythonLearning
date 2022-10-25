@@ -1,16 +1,15 @@
-numberCount = input('How many fibonacci numbers do you want to show? ')
-while not numberCount.isdigit():
+num = input('How many fibonacci numbers do you want to show? ')
+while not num.isdigit():
     print('Please use a number')
-    numberCount = input('How many fibonacci numbers do you want to show? ')
-numberCount = int(numberCount)
-numberCount -= 1
-firstBox = 0
-secondBox = 1
-print(str(firstBox) + (', '))
-print(str(secondBox) + (', '))
-while (numberCount > 1):
-    swichBox = firstBox + secondBox
-    print(str(swichBox) + (', '))
-    firstBox = secondBox
-    secondBox = swichBox
-    numberCount -= 1
+    num = input('How many fibonacci numbers do you want to show? ')
+num = int(num)
+num -= 1
+n1, n2 = 0, 1
+print(str(n1) + ', ', end='')
+print(str(n2) + ', ', end='')
+while num > 1:
+    swichBox = n1 + n2
+    print(str(swichBox) + ', ', end='')
+    n1 = n2
+    n2 = swichBox
+    num -= 1
