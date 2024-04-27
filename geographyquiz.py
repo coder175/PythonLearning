@@ -1,23 +1,61 @@
-#Starting Question/Prompt
-print("""Welcome to the Geography Quiz!
-You will be asked questions. Some questions are:
+import time
+import fontstyle
+import random
 
-    "What is the capital of Canada?"
-    "Where is the Taj Mahal Located?"
-    
-The answer for those two questions are:
+f = fontstyle
+t = time
+r = random
 
-    "Ottawa"
-    "India"
-    
-  You can capitalize or put symbols (like periods, hyphens, etc.) in your answer.
-  When you're giving the place of a important location, put the country, not the city or state.
-If your answer matches 80% or higher the actual answer, then it will be considered right.
-You can have 1 redemption question at the end of the quiz if you get something wrong.
-For every question you get right, you earn 4 points, and for every redemption question you get right, you earn 2 points.
-You will have 10 questions, and I will tell how many points you have along the way. 
-Good Luck! """)
-
+# print(f.apply(' Welcome to the Geography Quiz!', "bold green green_bg"))  # Questions At the Begenning
+# time.sleep(1)
+# print('You will be asked questions to earn Points. Some questions are:\n ')
+# time.sleep(1)
+# print(f.apply('    "What is the capital of Canada?"     ', "italic"))
+# time.sleep(1)
+# print(f.apply('    "Where is the Taj Mahal Located?"\n   ', "italic"))
+# time.sleep(1)
+# print('The answer for those two questions are:\n ')
+# time.sleep(1)
+# print(f.apply('    "Ottawa" ', "italic"))
+# time.sleep(1)
+# print(f.apply('    "India"\n  ', "italic"))
+# time.sleep(1)
+# print('  You can CAPATALIZE or put symbols (like periods, hyphens, etc.) in your answer. ')
+# time.sleep(1)
+# print("  When you're giving the place of a important location, put the country, not the city or state.\n ")
+# time.sleep(1)
+# print('If your answer matches 80% or higher the actual answer, then it will be considered right.')
+# time.sleep(1)
+# print('You can have 1 redemption question at the end of the quiz if you get something wrong.')
+# time.sleep(1)
+# print(
+#     'For every question you get right, you earn 4 points, and for every redemption question you get right, '
+#     'you earn 2 points.')
+# time.sleep(1)
+# print('You will have 10 questions, and I will tell how many points you have along the way.')
+# time.sleep(1)
+# print(f.apply(' Good Luck! ', "bold green green_bg"))
+# time.sleep(1)
+# print("\n")
+for _ in range(10):
+    time.sleep(0.25)
+    print("\n")
+print(f.apply(' READY? ', "bold red red_bg"))
+print("\n")
+time.sleep(2)
+print(f.apply(' 3 ', "bold red red_bg"))
+print("\n")
+time.sleep(1)
+print(f.apply(' 2 ', "bold red red_bg"))
+print("\n")
+time.sleep(1)
+print(f.apply(' 1 ', "bold red red_bg"))
+print("\n")
+time.sleep(1)
+print(f.apply(' GO! ', "bold green green_bg"))
+print("\n")
+time.sleep(2)
+# All of the questions that are in the Quiz
 questions = {
     "What is the Capital of Argentina?": "Buenos Aires",
     "What is the Capital of Australia?": "Canberra",
@@ -68,5 +106,23 @@ questions = {
     "Where is the Kremlin located?": "Russia",
     "Where is the Neuschwanstein Castle located?": "Germany",
     "Where is Chichen Itza located?": "Mexico",
-    "Where is the Moai Statues of Easter Island located?": "Chile"
+    "Where are the Moai Statues of Easter Island located?": "Chile"
 }
+
+numbers = {
+    0: "FIRST",
+    1: "SECOND",
+    2: "THIRD",
+    3: "FOURTH",
+    4: "FIFTH",
+    5: "SIXTH",
+    6: "SEVENTH",
+    7: "EIGHTH",
+    8: "NINTH",
+    9: "TENTH",
+}
+
+for nth in range(10):
+    time.sleep(1)
+    print('Here is your ' + f.apply(" " + numbers[nth] + " ", "bold green green_bg") + ' Question:')
+    print(questions[r.randint(0,51)])
