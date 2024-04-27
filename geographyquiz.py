@@ -188,3 +188,4 @@ for nth in range(10):
     print("\n")
     time.sleep(0.8)
     print("You got {correct} questions correct, and you have {points} points!")
+# Add More Questions
