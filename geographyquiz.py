@@ -7,60 +7,70 @@ d = difflib
 f = fontstyle
 t = time
 r = random
-print(f.apply(' Welcome to the Geography Quiz!', "bold green green_bg"), end="\n")  # Questions At the Begenning
+
+
+def loading(amount):
+    for _ in range(amount):
+        print(" ", end="")
+        print(f.apply("■", "bold"), end=" ")
+        time.sleep(0.25)
+        print(f.apply("■", "bold"), end=" ")
+        time.sleep(0.25)
+        print(f.apply("■", "bold"), end=" ")
+        time.sleep(0.5)
+        print("\b \b \b" * 7, end="")
+        time.sleep(0.25)
+    time.sleep(0.2)
+
+
+print(f.apply(' Welcome to the Geography Quiz!', "bold green green_bg"))  # Questions At the Begenning
+print("‎ ")
 time.sleep(1)
-wantInstr = input(f.apply("Would you like to read the Instructions? Please type Yes or No. ", "bold green"))
-wantInstr.strip()
+wantInstr = input(
+    f.apply("Would you like to read the Instructions? Please type", "green") + f.apply(" Yes", "bold green") + f.apply(
+        " or ", "green") + f.apply("No. ", "bold green"))
+wantInstr.replace(" ", "")
 while wantInstr.lower() not in ("yes", "no", "y", "n"):
     wantInstr = input(f.apply("You typed '" + wantInstr + "'. Please type either Yes or No to skip the instructions.",
                               "bold yellow yellow_bg"))
 
 if wantInstr.lower() in ("yes", "y"):
+    time.sleep(0.8)
     print(f.apply("Okay! Here are the instructions for this Quiz:", "green bold"))
-    time.sleep(0.4)
-    print('You will be asked questions to earn Points. Some questions are:\n ')
-    time.sleep(1)
-    print(f.apply('    "What is the capital of Canada?"     ', "italic"))
-    time.sleep(1)
-    print(f.apply('    "Where is the Taj Mahal Located?"\n   ', "italic"))
-    time.sleep(1)
-    print('The answer for those two questions are:\n ')
-    time.sleep(1)
+    time.sleep(1.5)
+    print('You will be asked questions to earn Points. Some questions are:\n')
+    time.sleep(1.5)
+    print(f.apply('    "What is the capital of Canada?"', "italic"))
+    time.sleep(1.5)
+    print(f.apply('    "Where is the Taj Mahal Located?"\n', "italic"))
+    time.sleep(1.5)
+    print('The answer for those two questions are:\n')
+    time.sleep(1.5)
     print(f.apply('    "Ottawa" ', "italic"))
-    time.sleep(1)
+    time.sleep(1.5)
     print(f.apply('    "India"\n  ', "italic"))
-    time.sleep(1)
-    print("You can CAPATALIZE or put symbols (like periods, hyphens, etc.) in your answer, it won't change your "
-          "score. ")
-    time.sleep(1)
-    print("  When you're giving the place of a important location, put the country, not the city or state.\n ")
-    time.sleep(1)
-    print('If your answer matches 85% or higher than the actual answer, then it will be considered right. If your '
-          'answer matches 65% or higher than the actual answer, it will be considered partially right (it will be '
-          'counted as half a question correct).')
-    time.sleep(3)
-    print('You can have 1 redemption question at the end of the quiz if you get something wrong.')
-    time.sleep(1)
+    time.sleep(1.5)
+    print("You are allowed to CAPATALIZE your answer.")
+    time.sleep(1.5)
+    print("When you're giving the place of a important location, put the country, not the city or state.\n ")
+    time.sleep(1.5)
+    print("The answer will be correct if it's higher than 85%, and it'll be partially right if it's "
+          "higher than 65%")
+    time.sleep(1.5)
+    print('You can have 1 redemption questions at the end of the quiz for when you get something wrong.')
+    time.sleep(1.5)
     print(
-        'For every question you get right, you earn 4 points, for every question you get partially right, you earn 2 '
-        'points, and for every redemption question you get right, you earn 1 point.')
-    time.sleep(1)
+        'Every right answer gets 4 points, and every partially right answer gets 2 points. You will get 1 point from a '
+        'redeption question.')
+    time.sleep(1.5)
     print('You will have 10 questions, and I will tell how many points you have along the way.')
-    time.sleep(1)
+    time.sleep(1.5)
     print(f.apply(' Good Luck! ', "bold green green_bg"))
-    time.sleep(1)
+    time.sleep(1.5)
 else:
-    print("\n")
-    time.sleep(0.25)
+    time.sleep(0.8)
     print(f.apply("Okay! Skipping the Instructions.", "bold green"))
     time.sleep(1)
-print(*['\n'] * 2)  # Print 2 Lines
-print(f.apply(" READY?", "bold red red_bg"))
-time.sleep(1)
-print("\n", end="")
-print(f.apply(' GO!', "bold green green_bg"), end="\n")
-time.sleep(0.8)
-print("\n")
 # All of the questions that are in the Quiz
 questions = {
     "What is the Capital of Argentina?": "Buenos Aires",
@@ -130,62 +140,72 @@ numbers = {
 
 correct = 0.0
 points = 0
+grades = []
 incorrectQ = []
 usedQ = []
 
 for nth in range(10):
-    time.sleep(1)
+    print("\n")
+    loading(1)
     print('Here is your ' + f.apply(" " + numbers[nth] + " ", "bold green green_bg") + ' Question:')
     time.sleep(0.8)
     availableQ = list(set(questions.keys()) - set(usedQ))
     randIndex = random.randint(0, len(availableQ) - 1)
     Q = availableQ[randIndex]
     answer = questions[Q]
-
+    time.sleep(0.5)
     userAns = input(Q + " ")
-    userAns = userAns.strip().lower()
+    userAns.replace(" ", "").lower()
     # Find % Similar:
-
-    similar = d.SequenceMatcher(None, answer.strip().lower(), userAns)
+    similar = d.SequenceMatcher(None, answer.replace(" ", "").lower(), userAns)
     percentSimilar = similar.ratio() * 100
+    grades.append(percentSimilar)
+    loading(2)
     if percentSimilar >= 85.0:
-        print("You got it right!")
-        time.sleep(0.8)
+        print(f.apply("Correct!", "bold green"))
+        time.sleep(1.5)
         if percentSimilar != 100.0:
-            print("The answer was " + answer + ".")
+            print("Answer: " + answer + ".")
             time.sleep(0.8)
-        print("You were " + str(int(percentSimilar)) + "% right!")
-        time.sleep(0.8)
-        print("Your score is higher than 85%, so it's counted right.")
-        time.sleep(0.8)
-        print("You got 4 points!")
+        print("Accuracy: " + f.apply(str(int(percentSimilar)), "bold green"))
         correct += 1.0
         points += 4
     elif percentSimilar <= 65.0:
-        print("You got it wrong.")
+        print(f.apply("Incorrect.", "red bold"))
         time.sleep(0.8)
-        print("The answer was " + answer + ".")
+        print("Answer: " + answer + ".")
         time.sleep(0.8)
-        print("You were " + str(int(percentSimilar)) + "% right, and you were " + str(85 - int(percentSimilar)) +
-              "% close to getting it right.")
-        time.sleep(1.5)
-        print("Your score is lower than 85%, so it was counted wrong.")
-        time.sleep(1.2)
-        print("You could try and get it right as a Redemption Question.")
+        print("Accuracy: " + f.apply(str(int(percentSimilar)), "bold red"))
+        incorrectQ.append(Q)
     else:
-        print("You got the answer partially right!")
-        print("The answer was " + answer + ".")
-        time.sleep(0.8)
-        print("You were {str(int(percentSimilar))}% right.")
-        print("You were {str(65 - int(percentSimilar))}% close to getting it partially right, and {str(85 - int("
-              "percentSimilar))}% close to getting it right.")
+        print(f.apply("Partially Correct!", "bold yellow"))
         time.sleep(1.5)
-        print("Your score is lower than 85%, so it was counted wrong.")
-        time.sleep(1.2)
-        print("You could try and get it right as a Redemption Question.")
+        print("Answer: " + answer + ".")
+        time.sleep(1.5)
+        print("Accuracy:" + f.apply(str(int(percentSimilar)), "bold yellow"))
         correct += 0.5
         points += 2
-    print("\n")
-    time.sleep(0.8)
-    print("You got {correct} questions correct, and you have {points} points!")
+    time.sleep(1)
+    print("")
+    time.sleep(0.5)
+    print("")
+    print(f"Total Questions Correct: {correct}")
+    time.sleep(0.7)
+    print(f"Total Points: {points}")
+    time.sleep(0.7)
+    print(f"Total Average: {int((sum(grades)) / len(grades))}%")
+    time.sleep(1.2)
+
+    usedQ.append(Q)
+
+print("These are you results: ")
+print(f"Total Questions Correct: {correct}")
+time.sleep(0.7)
+print(f"Total Points: {points}")
+time.sleep(0.7)
+print(f"Total Average: {int((sum(grades)) / len(grades))}%")
+time.sleep(1.2)
+
+if len(incorrectQ) > 0:
+    print("Time for you Redemption Question!")
 # Add More Questions
