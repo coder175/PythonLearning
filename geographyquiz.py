@@ -23,7 +23,7 @@ def loading():
         else:
             print(f.apply("■", "bold"), end=" ")
             time.sleep(0.25)
-    print("\b \b \b" * ((randomTicks * 2) + 1), end=" ")
+    print("\b \b \b" * ((randomTicks * 2) + 1), end=" ") 
 
 
 print(f.apply(' Welcome to the Geography Quiz!', "bold green green_bg"))  # Questions At the Begenning
