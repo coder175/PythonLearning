@@ -9,18 +9,21 @@ t = time
 r = random
 
 
-def loading(amount):
-    for _ in range(amount):
-        print(" ", end="")
-        print(f.apply("■", "bold"), end=" ")
-        time.sleep(0.25)
-        print(f.apply("■", "bold"), end=" ")
-        time.sleep(0.25)
-        print(f.apply("■", "bold"), end=" ")
-        time.sleep(0.5)
-        print("\b \b \b" * 7, end="")
-        time.sleep(0.25)
-    time.sleep(0.2)
+def loading():
+    randomTicks = random.choice([1, 2, 3])
+    for x in range(1, (3 + randomTicks) + 1):
+        if x % 3 == 0:
+            print(f.apply("■", "bold"), end=" ")
+            time.sleep(0.5)
+            print("\b \b \b" * 7, end="")
+        elif x % 3 == 1:
+            print(" ", end="")
+            print(f.apply("■", "bold"), end=" ")
+            time.sleep(0.25)
+        else:
+            print(f.apply("■", "bold"), end=" ")
+            time.sleep(0.25)
+    print("\b \b \b" * ((randomTicks * 2) + 1), end=" ")
 
 
 print(f.apply(' Welcome to the Geography Quiz!', "bold green green_bg"))  # Questions At the Begenning
@@ -115,14 +118,62 @@ questions = {
     "Where is the Sydney Opera House located?": "Australia",
     "Where is the Angkor Wat located?": "Cambodia",
     "Where is the Acropolis of Athens located?": "Greece",
-    "Where is Stonehenge located?": "United Kingdom",
     "Where is the Sagrada Familia located?": "Spain",
     "Where is the Burj Khalifa located?": "United Arab Emirates",
     "Where is Mount Rushmore located?": "United States",
     "Where is the Kremlin located?": "Russia",
     "Where is the Neuschwanstein Castle located?": "Germany",
     "Where is Chichen Itza located?": "Mexico",
-    "Where are the Moai Statues of Easter Island located? (Which country owns it)": "Chile"
+    "Where are the Moai Statues of Easter Island located (Which country owns it)?": "Chile",
+    "What is the Longest River in the World (Just put the name of the river)?": "Nile",
+    "Which CONTINENT has the Sahara Desert?": "Africa",
+    "In which CONTINENT is the United States located?": "North America",
+    "In which CONTINENT is Brazil located?": "South America",
+    "In which CONTINENT is Spain located?": "Europe",
+    "In which CONTINENT is Mexico located?": "North America",
+    "In which CONTINENT is China located?": "Asia",
+    "In which CONTINENT is Egypt located?": "Africa",
+    "In which CONTINENT is South Africa located?": "Africa",
+    "In which CONTINENT is Canada located?": "North America",
+    "In which CONTINENT is India located?": "Asia",
+    "In which CONTINENT is Argentina located?": "South America",
+    "In which CONTINENT is France located?": "Europe",
+    "In which CONTINENT is Japan located?": "Asia",
+    "In which CONTINENT is Italy located?": "Europe",
+    "In which CONTINENT is Germany located?": "Europe",
+    "In which CONTINENT is Saudi Arabia located?": "Asia",
+    "In which CONTINENT is Nigeria located?": "Africa",
+    "In which CONTINENT is Indonesia located?": "Asia",
+    "In which CONTINENT is Pakistan located?": "Asia",
+    "In which CONTINENT is Bangladesh located?": "Asia",
+    "In which CONTINENT is the United Kingdom located?": "Europe",
+    "In which CONTINENT is Turkey located?": "Asia",
+    "In which CONTINENT is Iran located?": "Asia",
+    "In which CONTINENT is the Philippines located?": "Asia",
+    "In which CONTINENT is Vietnam located?": "Asia",
+    "In which CONTINENT is Thailand located?": "Asia",
+    "In which CONTINENT is Myanmar located?": "Asia",
+    "In which CONTINENT is South Korea located?": "Asia",
+    "In which CONTINENT is Colombia located?": "South America",
+    "What COUNTRY has the Golden Gate Bridge?": "United States",
+    "What COUNTRY has the Amazon Rainforest?": "Brazil",
+    "What COUNTRY is the Great Barrier Reef located in?": "Australia",
+    "What COUNTRY is Mount Everest located in?": "Nepal",
+    "What CONTINENT is the Nile River located in?": "Africa",
+    "What COUNTRY is the Eiffel Tower located in?": "France",
+    "What COUNTRY is the Colosseum located in?": "Italy",
+    "What COUNTRY is the Kremlin located in?": "Russia",
+    "What COUNTRY is the Grand Canyon located in?": "United States",
+    "What COUNTRY is the Great Wall located in?": "China",
+    "What COUNTRY is the Statue of Liberty located in?": "United States",
+    "What COUNTRY is the Taj Mahal located in?": "India",
+    "What COUNTRY is the Sydney Opera House located in?": "Australia",
+    "What COUNTRY is the Acropolis located in?": "Greece",
+    "What COUNTRY is the Machu Picchu located in?": "Peru",
+    "What COUNTRY is the Stonehenge located in?": "United Kingdom",
+    "What COUNTRY is the Mount Kilimanjaro located in?": "Tanzania",
+    "What COUNTRY is the Angkor Wat located in?": "Cambodia",
+    "What COUNTRY is the Christ the Redeemer located in?": "Brazil"
 }
 
 numbers = {
@@ -146,7 +197,7 @@ usedQ = []
 
 for nth in range(10):
     print("\n")
-    loading(1)
+    loading()
     print('Here is your ' + f.apply(" " + numbers[nth] + " ", "bold green green_bg") + ' Question:')
     time.sleep(0.8)
     availableQ = list(set(questions.keys()) - set(usedQ))
@@ -160,7 +211,7 @@ for nth in range(10):
     similar = d.SequenceMatcher(None, answer.replace(" ", "").lower(), userAns)
     percentSimilar = similar.ratio() * 100
     grades.append(percentSimilar)
-    loading(2)
+    loading()
     if percentSimilar >= 85.0:
         print(f.apply("Correct!", "bold green"))
         time.sleep(1.5)
@@ -209,3 +260,4 @@ time.sleep(1.2)
 if len(incorrectQ) > 0:
     print("Time for you Redemption Question!")
 # Add More Questions
+# Stop Loading Animation at Random Ticks
