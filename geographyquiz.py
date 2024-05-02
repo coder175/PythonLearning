@@ -2,6 +2,7 @@ import time
 import fontstyle
 import random
 import difflib
+import re
 
 d = difflib
 f = fontstyle
@@ -16,6 +17,7 @@ def loading():
             print(f.apply("■", "bold"), end=" ")
             time.sleep(0.5)
             print("\b \b \b" * 7, end="")
+            time.sleep(0.5)
         elif x % 3 == 1:
             print(" ", end="")
             print(f.apply("■", "bold"), end=" ")
@@ -23,9 +25,11 @@ def loading():
         else:
             print(f.apply("■", "bold"), end=" ")
             time.sleep(0.25)
-    print("\b \b \b" * ((randomTicks * 2) + 1), end=" ") 
+    print("\b", end=" ")
+    print("", end="\r")
 
 
+loading()
 print(f.apply(' Welcome to the Geography Quiz!', "bold green green_bg"))  # Questions At the Begenning
 print("‎ ")
 time.sleep(1)
@@ -206,14 +210,14 @@ for nth in range(10):
     answer = questions[Q]
     time.sleep(0.5)
     userAns = input(Q + " ")
-    userAns.replace(" ", "").lower()
+    userAns = re.sub(r"[^a-zA-Z]", "", userAns.lower())
     # Find % Similar:
-    similar = d.SequenceMatcher(None, answer.replace(" ", "").lower(), userAns)
+    similar = d.SequenceMatcher(None, re.sub(r"[^a-zA-Z]", "", answer.lower()), userAns)
     percentSimilar = similar.ratio() * 100
     grades.append(percentSimilar)
     loading()
     if percentSimilar >= 85.0:
-        print(f.apply("Correct!", "bold green"))
+        print(f.apply(" Correct!", "bold green"))
         time.sleep(1.5)
         if percentSimilar != 100.0:
             print("Answer: " + answer + ".")
@@ -260,4 +264,3 @@ time.sleep(1.2)
 if len(incorrectQ) > 0:
     print("Time for you Redemption Question!")
 # Add More Questions
-# Stop Loading Animation at Random Ticks
