@@ -15,24 +15,25 @@ def loading():
     for x in range(1, (3 + randomTicks) + 1):
         if x % 3 == 0:
             print(f.apply("■", "bold"), end=" ")
-            time.sleep(0.5)
+            t.sleep(0.5)
             print("\b \b \b" * 7, end="")
-            time.sleep(0.5)
         elif x % 3 == 1:
+            t.sleep(0.5)
             print(" ", end="")
             print(f.apply("■", "bold"), end=" ")
-            time.sleep(0.25)
+            t.sleep(0.25)
         else:
             print(f.apply("■", "bold"), end=" ")
-            time.sleep(0.25)
+            t.sleep(0.25)
     print("\b", end=" ")
     print("", end="\r")
+    DID NOT FINISH
 
 
 loading()
 print(f.apply(' Welcome to the Geography Quiz!', "bold green green_bg"))  # Questions At the Begenning
 print("‎ ")
-time.sleep(1)
+t.sleep(1)
 wantInstr = input(
     f.apply("Would you like to read the Instructions? Please type", "green") + f.apply(" Yes", "bold green") + f.apply(
         " or ", "green") + f.apply("No. ", "bold green"))
@@ -42,47 +43,49 @@ while wantInstr.lower() not in ("yes", "no", "y", "n"):
                               "bold yellow yellow_bg"))
 
 if wantInstr.lower() in ("yes", "y"):
-    time.sleep(0.8)
+    t.sleep(0.8)
     print(f.apply("Okay! Here are the instructions for this Quiz:", "green bold"))
-    time.sleep(1.5)
+    t.sleep(1.5)
     print('You will be asked questions to earn Points. Some questions are:\n')
-    time.sleep(1.5)
+    t.sleep(1.5)
     print(f.apply('    "What is the capital of Canada?"', "italic"))
-    time.sleep(1.5)
+    t.sleep(1.5)
     print(f.apply('    "Where is the Taj Mahal Located?"\n', "italic"))
-    time.sleep(1.5)
+    t.sleep(1.5)
     print('The answer for those two questions are:\n')
-    time.sleep(1.5)
+    t.sleep(1.5)
     print(f.apply('    "Ottawa" ', "italic"))
-    time.sleep(1.5)
+    t.sleep(1.5)
     print(f.apply('    "India"\n  ', "italic"))
-    time.sleep(1.5)
+    t.sleep(1.5)
     print("You are allowed to CAPATALIZE your answer.")
-    time.sleep(1.5)
+    t.sleep(1.5)
     print("When you're giving the place of a important location, put the country, not the city or state.\n ")
-    time.sleep(1.5)
+    t.sleep(1.5)
     print("The answer will be correct if it's higher than 85%, and it'll be partially right if it's "
           "higher than 65%")
-    time.sleep(1.5)
+    t.sleep(1.5)
     print('You can have 1 redemption questions at the end of the quiz for when you get something wrong.')
-    time.sleep(1.5)
+    t.sleep(1.5)
     print(
         'Every right answer gets 4 points, and every partially right answer gets 2 points. You will get 1 point from a '
         'redeption question.')
-    time.sleep(1.5)
+    t.sleep(1.5)
     print('You will have 10 questions, and I will tell how many points you have along the way.')
-    time.sleep(1.5)
+    t.sleep(1.5)
+    print("You can get a hint by typing '" + f.apply(" h ", "bold red red_bg") + "'!")
     print(f.apply(' Good Luck! ', "bold green green_bg"))
-    time.sleep(1.5)
+    t.sleep(1.5)
+    print("")
 else:
-    time.sleep(0.8)
+    t.sleep(0.8)
     print(f.apply("Okay! Skipping the Instructions.", "bold green"))
-    time.sleep(1)
+    t.sleep(1)
 # All of the questions that are in the Quiz
 questions = {
     "What is the Capital of Argentina?": "Buenos Aires",
     "What is the Capital of Australia?": "Canberra",
-    "What is the Capital of Brazil?": "Brasília",
+    "What is the Capital of Brazil?": "Brasilia",
     "What is the Capital of Canada?": "Ottawa",
     "What is the Capital of China?": "Beijing",
     "What is the Capital of Egypt?": "Cairo",
@@ -120,7 +123,6 @@ questions = {
     "Where is the Petra located?": "Jordan",
     "Where is the Christ the Redeemer located?": "Brazil",
     "Where is the Sydney Opera House located?": "Australia",
-    "Where is the Angkor Wat located?": "Cambodia",
     "Where is the Acropolis of Athens located?": "Greece",
     "Where is the Sagrada Familia located?": "Spain",
     "Where is the Burj Khalifa located?": "United Arab Emirates",
@@ -131,50 +133,21 @@ questions = {
     "Where are the Moai Statues of Easter Island located (Which country owns it)?": "Chile",
     "What is the Longest River in the World (Just put the name of the river)?": "Nile",
     "Which CONTINENT has the Sahara Desert?": "Africa",
-    "In which CONTINENT is the United States located?": "North America",
-    "In which CONTINENT is Brazil located?": "South America",
-    "In which CONTINENT is Spain located?": "Europe",
-    "In which CONTINENT is Mexico located?": "North America",
-    "In which CONTINENT is China located?": "Asia",
-    "In which CONTINENT is Egypt located?": "Africa",
-    "In which CONTINENT is South Africa located?": "Africa",
-    "In which CONTINENT is Canada located?": "North America",
-    "In which CONTINENT is India located?": "Asia",
-    "In which CONTINENT is Argentina located?": "South America",
-    "In which CONTINENT is France located?": "Europe",
-    "In which CONTINENT is Japan located?": "Asia",
-    "In which CONTINENT is Italy located?": "Europe",
-    "In which CONTINENT is Germany located?": "Europe",
-    "In which CONTINENT is Saudi Arabia located?": "Asia",
-    "In which CONTINENT is Nigeria located?": "Africa",
-    "In which CONTINENT is Indonesia located?": "Asia",
-    "In which CONTINENT is Pakistan located?": "Asia",
-    "In which CONTINENT is Bangladesh located?": "Asia",
-    "In which CONTINENT is the United Kingdom located?": "Europe",
-    "In which CONTINENT is Turkey located?": "Asia",
-    "In which CONTINENT is Iran located?": "Asia",
-    "In which CONTINENT is the Philippines located?": "Asia",
-    "In which CONTINENT is Vietnam located?": "Asia",
-    "In which CONTINENT is Thailand located?": "Asia",
-    "In which CONTINENT is Myanmar located?": "Asia",
-    "In which CONTINENT is South Korea located?": "Asia",
-    "In which CONTINENT is Colombia located?": "South America",
     "What COUNTRY has the Golden Gate Bridge?": "United States",
-    "What COUNTRY has the Amazon Rainforest?": "Brazil",
-    "What COUNTRY is the Great Barrier Reef located in?": "Australia",
+    "Which COUNTRY contains most of the Amazon Rainforest?": "Brazil",
+    "What COUNTRY is the Great Barrier Reef next to?": "Australia",
     "What COUNTRY is Mount Everest located in?": "Nepal",
     "What CONTINENT is the Nile River located in?": "Africa",
     "What COUNTRY is the Eiffel Tower located in?": "France",
     "What COUNTRY is the Colosseum located in?": "Italy",
     "What COUNTRY is the Kremlin located in?": "Russia",
     "What COUNTRY is the Grand Canyon located in?": "United States",
-    "What COUNTRY is the Great Wall located in?": "China",
+    "What COUNTRY is the Great Wall of _____ located in?": "China",
     "What COUNTRY is the Statue of Liberty located in?": "United States",
     "What COUNTRY is the Taj Mahal located in?": "India",
     "What COUNTRY is the Sydney Opera House located in?": "Australia",
     "What COUNTRY is the Acropolis located in?": "Greece",
     "What COUNTRY is the Machu Picchu located in?": "Peru",
-    "What COUNTRY is the Stonehenge located in?": "United Kingdom",
     "What COUNTRY is the Mount Kilimanjaro located in?": "Tanzania",
     "What COUNTRY is the Angkor Wat located in?": "Cambodia",
     "What COUNTRY is the Christ the Redeemer located in?": "Brazil"
@@ -199,17 +172,18 @@ grades = []
 incorrectQ = []
 usedQ = []
 
-for nth in range(10):
+for nth in range(2):
     print("\n")
     loading()
     print('Here is your ' + f.apply(" " + numbers[nth] + " ", "bold green green_bg") + ' Question:')
-    time.sleep(0.8)
+    t.sleep(0.8)
     availableQ = list(set(questions.keys()) - set(usedQ))
     randIndex = random.randint(0, len(availableQ) - 1)
     Q = availableQ[randIndex]
     answer = questions[Q]
-    time.sleep(0.5)
+    t.sleep(0.5)
     userAns = input(Q + " ")
+    print("")
     userAns = re.sub(r"[^a-zA-Z]", "", userAns.lower())
     # Find % Similar:
     similar = d.SequenceMatcher(None, re.sub(r"[^a-zA-Z]", "", answer.lower()), userAns)
@@ -218,49 +192,64 @@ for nth in range(10):
     loading()
     if percentSimilar >= 85.0:
         print(f.apply(" Correct!", "bold green"))
-        time.sleep(1.5)
+        t.sleep(1.5)
         if percentSimilar != 100.0:
             print("Answer: " + answer + ".")
-            time.sleep(0.8)
+            t.sleep(0.8)
         print("Accuracy: " + f.apply(str(int(percentSimilar)), "bold green"))
         correct += 1.0
         points += 4
     elif percentSimilar <= 65.0:
         print(f.apply("Incorrect.", "red bold"))
-        time.sleep(0.8)
+        t.sleep(0.8)
         print("Answer: " + answer + ".")
-        time.sleep(0.8)
+        t.sleep(0.8)
         print("Accuracy: " + f.apply(str(int(percentSimilar)), "bold red"))
         incorrectQ.append(Q)
     else:
         print(f.apply("Partially Correct!", "bold yellow"))
-        time.sleep(1.5)
+        t.sleep(1.5)
         print("Answer: " + answer + ".")
-        time.sleep(1.5)
+        t.sleep(1.5)
         print("Accuracy:" + f.apply(str(int(percentSimilar)), "bold yellow"))
         correct += 0.5
         points += 2
-    time.sleep(1)
+    t.sleep(1)
     print("")
-    time.sleep(0.5)
+    t.sleep(0.5)
     print("")
     print(f"Total Questions Correct: {correct}")
-    time.sleep(0.7)
+    t.sleep(0.7)
     print(f"Total Points: {points}")
-    time.sleep(0.7)
+    t.sleep(0.7)
     print(f"Total Average: {int((sum(grades)) / len(grades))}%")
-    time.sleep(1.2)
+    t.sleep(1.2)
 
     usedQ.append(Q)
-
+print("")
+t.sleep(0.75)
 print("These are you results: ")
-print(f"Total Questions Correct: {correct}")
-time.sleep(0.7)
-print(f"Total Points: {points}")
-time.sleep(0.7)
-print(f"Total Average: {int((sum(grades)) / len(grades))}%")
-time.sleep(1.2)
+print("")
+print(f.apply(f" Total Questions Correct: {correct} ", "bold red red_bg"))
+t.sleep(0.7)
+print(f.apply(f" Total Points: {points} ", "bold red red_bg"))
+t.sleep(0.7)
+print(f.apply(f" Total Average: {int((sum(grades)) / len(grades))}% ", "bold red red_bg"))
+t.sleep(1.2)
 
 if len(incorrectQ) > 0:
     print("Time for you Redemption Question!")
+    t.sleep(0.5)
+    randomInncorectQ = random.choice(incorrectQ)
+    redemptionAnswer = questions[randomInncorectQ]
+    print("")
+    print("Here it is:")
+    userRedemptionAns = input(randomInncorectQ + " ")
+    print("")
+    userAns = re.sub(r"[^a-zA-Z]", "", userRedemptionAns.lower())
+    # Find % Similar:
+    redemptionSimilar = d.SequenceMatcher(None, re.sub(r"[^a-zA-Z]", "", redemptionAnswer.lower()), userAns)
+    percentSimilar = redemptionSimilar.ratio() * 100
+    loading()
+    print(percentSimilar)
 # Add More Questions
