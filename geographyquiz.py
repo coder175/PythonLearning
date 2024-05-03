@@ -16,7 +16,7 @@ def loading():
         if x % 3 == 0:
             print(f.apply("■", "bold"), end=" ")
             t.sleep(0.5)
-            print("\b \b \b" * 7, end="")
+            print("\b \b \b" * 7, end=" ")
         elif x % 3 == 1:
             t.sleep(0.5)
             print(" ", end="")
@@ -25,12 +25,11 @@ def loading():
         else:
             print(f.apply("■", "bold"), end=" ")
             t.sleep(0.25)
-    print("\b", end=" ")
-    print("", end="\r")
-    DID NOT FINISH
+
+    print(" ", end="\r")
+    print("", end="")
 
 
-loading()
 print(f.apply(' Welcome to the Geography Quiz!', "bold green green_bg"))  # Questions At the Begenning
 print("‎ ")
 t.sleep(1)
@@ -239,16 +238,26 @@ t.sleep(1.2)
 
 if len(incorrectQ) > 0:
     print("Time for you Redemption Question!")
-    t.sleep(0.5)
+    t.sleep(2)
     randomInncorectQ = random.choice(incorrectQ)
-    redemptionAnswer = questions[randomInncorectQ]
     print("")
-    print("Here it is:")
-    userRedemptionAns = input(randomInncorectQ + " ")
+    print("This is the question you got wrong:")
+    t.sleep(2)
+    print("  " + randomInncorectQ + " ")
     print("")
-    userAns = re.sub(r"[^a-zA-Z]", "", userRedemptionAns.lower())
+    availableQ = list(set(questions.keys()) - set(usedQ))
+    randIndex = random.randint(0, len(availableQ) - 1)
+    Q = availableQ[randIndex]
+    redemptionAnswer = questions[Q]
+    t.sleep(2)
+    print("This is the question you're going to solve:")
+    t.sleep(2)
+    userRedemptionAns = input("  " + Q + " ")
+    userRedemptionAns = re.sub(r"[^a-zA-Z]", "", userRedemptionAns.lower())
+
+
     # Find % Similar:
-    redemptionSimilar = d.SequenceMatcher(None, re.sub(r"[^a-zA-Z]", "", redemptionAnswer.lower()), userAns)
+    redemptionSimilar = d.SequenceMatcher(None, re.sub(r"[^a-zA-Z]", "", redemptionAnswer.lower()), userRedemptionAns)
     percentSimilar = redemptionSimilar.ratio() * 100
     loading()
     print(percentSimilar)
