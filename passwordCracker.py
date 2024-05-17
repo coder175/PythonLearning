@@ -14,7 +14,9 @@ amount = int(amount)
 password = ''
 for x in range(amount):
     password = password + str(random.randint(0, 9))
-print(password)
+time.sleep(0.5)
+print("Here is the password we're trying to find:", password)
+time.sleep(1)
 print('\n')
 start = time.time()
 charNum1 = 1
@@ -25,14 +27,16 @@ charNum5 = 5
 charNum6 = 6
 counter = 1
 
+keepRunning = True
 
 def updateProg():
+    global keepRunning
     startTime = time.time()
-    while True:
-        print(charNum1, charNum2, charNum3, charNum4, charNum5, charNum6, 'characters are currently running; In ',
-              '{:,}'.format(round(time.time() - start)), 'seconds, I tried ', '{:,}'.format(counter),
-              ' possible passwords.', end='')
-        time.sleep(0.35 - ((time.time() - startTime) % 0.35))
+    while keepRunning:
+        print(charNum1, charNum2, charNum3, charNum4, charNum5, charNum6, 'running Chars; Seconds:',
+              '{:,}'.format(round(time.time() - start)), '. Tries:', '{:,}'.format(counter),
+              '.', end='')
+        time.sleep(0.5)
         print('\r', end=' ')
 
 
@@ -151,9 +155,16 @@ def passCrack6():
 
 
 def complete(i):
+    global keepRunning
     end = round(time.time() - start)
-    print('\n \n')
-    print('I used ', '{:,}'.format(end), ' seconds and', '{:,}'.format(counter), 'tries to find the password',
+    keepRunning = False
+    time.sleep(1)
+    print("\n \n \n")
+    for x in ['FOUND NUMBER', '#OUND NUMBER', 'F#UND NUMBER', 'FO#ND NUMBER', 'FOU#D NUMBER', 'FOUN# NUMBER', 'FOUND#NUMBER', 'FOUND #UMBER', 'FOUND N#MBER', 'FOUND NU#BER', 'FOUND NUM#ER', 'FOUND NUMB#R', 'FOUND NUMBE#', 'FOUND NUMBER']:
+        time.sleep(0.1)
+        print('\r {}'.format(x), end='')
+    print()
+    print('Seconds Used:', '{:,}'.format(round(time.time() - start - 2)), '. Tries:', '{:,}'.format(counter), ". Password Found:",
           '{:,}'.format(int(i)))
     os._exit(0)
 
