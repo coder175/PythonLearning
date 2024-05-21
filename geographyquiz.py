@@ -27,7 +27,7 @@ def loading():
             t.sleep(0.25)
 
     print(" ", end="\r")
-    print("", end="")
+    print("                              ", end="")
 
 
 def GeographyQuiz():
