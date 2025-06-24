@@ -31,7 +31,7 @@ def loading():
 
 
 def GeographyQuiz():
-    print(f.apply(' Welcome to the Geography Quiz!', "bold green green_bg"))  # Questions At the Begenning
+    print(f.apply(' Welcome to the Geography Quiz!', "bold green green_bg"))  # Questions At the Beginning
     print("‎ ")
     t.sleep(1)
     wantInstr = input(
@@ -60,7 +60,7 @@ def GeographyQuiz():
         t.sleep(1.5)
         print(f.apply('    "India"\n  ', "italic"))
         t.sleep(1.5)
-        print("You are allowed to CAPATALIZE your answer.")
+        print("You are allowed to CAPITALIZE your answer.")
         t.sleep(1.5)
         print("When you're giving the place of a important location, put the country, not the city or state.\n ")
         t.sleep(1.5)
@@ -71,7 +71,7 @@ def GeographyQuiz():
         t.sleep(1.5)
         print(
             'Every right answer gets 4 points, and every partially right answer gets 2 points. You will get 1 point from a '
-            'redeption question.')
+            'reception question.')
         t.sleep(1.5)
         print('You will have 10 questions, and I will tell how many points you have along the way.')
         t.sleep(1.5)
@@ -83,7 +83,7 @@ def GeographyQuiz():
         t.sleep(0.8)
         print(f.apply("Okay! Skipping the Instructions.", "bold green"))
         t.sleep(1)
-    # All of the questions that are in the Quiz
+    # All the questions that are in the Quiz
     questions = {
         "What is the Capital of Argentina?": "Buenos Aires",
         "What is the Capital of Australia?": "Canberra",
@@ -242,11 +242,11 @@ def GeographyQuiz():
     if len(incorrectQ) > 0:
         print("Time for you Redemption Question!")
         t.sleep(2)
-        randomInncorectQ = random.choice(incorrectQ)
+        randomIncorrectQ = random.choice(incorrectQ)
         print("")
         print("This is the question you got wrong:")
         t.sleep(2)
-        print("  " + randomInncorectQ + " ")
+        print("  " + randomIncorrectQ + " ")
         print("")
         availableQ = list(set(questions.keys()) - set(usedQ))
         randIndex = random.randint(0, len(availableQ) - 1)
