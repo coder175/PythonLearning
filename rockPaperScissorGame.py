@@ -1,6 +1,6 @@
 import random
 import time
-from simple_chalk import green, red, yellow
+from simple_chalk import red, green, yellow
 
 
 def RPSGame():
@@ -31,62 +31,76 @@ def RPSGame():
 
         print('The Computer chose ' + computerChoicePrint)
         if computerChoice == 'r' and userChoice == 'r':
+            time.sleep(1)
             print('')
             print(yellow("Tie..."))
             print('')
             t += 1
         elif computerChoice == 'r' and userChoice == 'p':
+            time.sleep(1)
             print('')
             print(green('User Wins Round.'))
             print('')
             u += 1
         elif computerChoice == 'r' and userChoice == 's':
+            time.sleep(1)
             print('')
             print(red('Computer Wins Round.'))
             print('')
             c += 1
         elif computerChoice == 'p' and userChoice == 'r':
+            time.sleep(1)
             print('')
             print(red('Computer Wins Round.'))
             print('')
             c += 1
         elif computerChoice == 'p' and userChoice == 'p':
+            time.sleep(1)
             print('')
             print(yellow("Tie..."))
             print('')
             t += 1
         elif computerChoice == 'p' and userChoice == 's':
+            time.sleep(1)
             print('')
             print(green('User Wins Round.'))
             print('')
             u += 1
         elif computerChoice == 's' and userChoice == 'r':
+            time.sleep(1)
             print('')
             print(green('User Wins Round.'))
             print('')
             u += 1
         elif computerChoice == 's' and userChoice == 'p':
+            time.sleep(1)
             print('')
             print(red('Computer Wins Round.'))
             print('')
             c += 1
         elif computerChoice == 's' and userChoice == 's':
+            time.sleep(1)
             print('')
             print(yellow("Tie..."))
             print('')
             t += 1
         else:
-            print("I'm Sorry. Something Went Wrong. The game closed.")
+            print("I'm Sorry. Something Went Wrong. The game is closed.")
             exit()
     u = str(u)
     c = str(c)
     t = str(t)
+
+    time.sleep(2)
+    print('')
+    print('-------------------------')
+    print('')
     print('User is ' + u)
     print('Computer is ' + c)
     print('Ties are ' + t)
-    if (u == c):
+    if u == c:
         print(yellow.bold('The final Score is Tie'))
-    elif (u > c):
+    elif u > c:
         print(green.bold('User Wins'))
     else:
         print(red.bold('Computer Wins'))
